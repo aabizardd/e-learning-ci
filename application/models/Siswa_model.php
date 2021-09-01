@@ -37,7 +37,7 @@ class siswa_model extends CI_Model
 
     public function get_tujuan_guru()
     {
-        $this->db->select('*, el.id id_user, ep.id id_pengajar');
+        $this->db->select('*, el.id id_user, ep.id id_pengajar, el.id id');
         $this->db->from('el_login el');
         $this->db->join('el_pengajar ep', 'el.pengajar_id = ep.id');
         // $this->db->where('ep.id !=', $this->session->userdata('idLogin'));
