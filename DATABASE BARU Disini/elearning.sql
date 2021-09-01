@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Jun 2021 pada 10.26
--- Versi server: 10.4.14-MariaDB
--- Versi PHP: 7.4.11
+-- Generation Time: Sep 01, 2021 at 04:57 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_absen`
+-- Table structure for table `el_absen`
 --
 
 CREATE TABLE `el_absen` (
@@ -38,18 +38,28 @@ CREATE TABLE `el_absen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `el_absen`
+-- Dumping data for table `el_absen`
 --
 
 INSERT INTO `el_absen` (`id`, `kelas_id`, `mapel_id`, `pengajar_id`, `tanggal`, `jam_mulai`, `jam_selesai`) VALUES
 (3, 2, 2, 2, '2020-05-04', '11:00:00', '13:00:00'),
 (4, 7, 2, 2, '2020-05-02', '12:15:00', '02:16:00'),
-(5, 7, 2, 2, '2021-04-16', '16:50:00', '18:52:00');
+(5, 7, 2, 2, '2021-04-16', '16:50:00', '18:52:00'),
+(6, 7, 6, 2, '2021-06-23', '08:00:00', '10:30:00'),
+(7, 7, 6, 2, '2021-06-15', '10:00:00', '00:30:00'),
+(8, 7, 6, 2, '2021-06-23', '08:00:00', '10:30:00'),
+(9, 2, 2, 2, '2021-06-23', '18:31:00', '19:00:00'),
+(10, 7, 2, 2, '2021-07-21', '20:52:00', '21:00:00'),
+(11, 5, 3, 7, '2021-07-23', '08:51:00', '08:53:00'),
+(12, 7, 2, 2, '2021-08-11', '18:41:00', '19:00:00'),
+(13, 7, 2, 2, '2021-08-11', '18:41:00', '19:00:00'),
+(14, 7, 2, 2, '2021-08-13', '10:02:00', '11:00:00'),
+(15, 7, 2, 2, '2021-08-13', '10:02:00', '11:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_absen_siswa`
+-- Table structure for table `el_absen_siswa`
 --
 
 CREATE TABLE `el_absen_siswa` (
@@ -60,18 +70,66 @@ CREATE TABLE `el_absen_siswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `el_absen_siswa`
+-- Dumping data for table `el_absen_siswa`
 --
 
 INSERT INTO `el_absen_siswa` (`id`, `absen_id`, `siswa_id`, `status`) VALUES
 (1, 3, 11, 1),
 (2, 4, 2, 1),
-(3, 5, 2, 2);
+(3, 5, 2, 2),
+(4, 6, 3, 1),
+(5, 6, 13, 0),
+(6, 7, 3, 0),
+(7, 7, 13, 0),
+(8, 8, 3, 0),
+(9, 8, 13, 0),
+(10, 9, 2, 0),
+(11, 9, 11, 0),
+(12, 10, 3, 1),
+(13, 10, 13, 0),
+(14, 11, 14, 1),
+(15, 12, 3, 1),
+(16, 12, 13, 0),
+(17, 13, 3, 3),
+(18, 13, 13, 0),
+(19, 14, 3, 1),
+(20, 14, 13, 0),
+(21, 15, 3, 1),
+(22, 15, 13, 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_field_tambahan`
+-- Table structure for table `el_banksoal`
+--
+
+CREATE TABLE `el_banksoal` (
+  `id_banksoal` int(11) NOT NULL,
+  `gambar` text DEFAULT NULL,
+  `pertanyaan` text DEFAULT NULL,
+  `pg_a` text DEFAULT NULL,
+  `pg_b` text DEFAULT NULL,
+  `pg_c` text DEFAULT NULL,
+  `jawaban_pg` text DEFAULT NULL,
+  `tipe` int(11) NOT NULL COMMENT '1=pg,2=essay,3=file',
+  `file_soal` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `el_banksoal`
+--
+
+INSERT INTO `el_banksoal` (`id_banksoal`, `gambar`, `pertanyaan`, `pg_a`, `pg_b`, `pg_c`, `jawaban_pg`, `tipe`, `file_soal`) VALUES
+(2, 'pulsa-banner1.jpg', '1 + 3 =', 'A.2', 'B.3', 'C.4', 'C', 1, NULL),
+(3, NULL, 'Siapa nama kamu?', NULL, NULL, NULL, NULL, 2, NULL),
+(4, NULL, NULL, NULL, NULL, NULL, NULL, 3, 'Validasi_Form_Auth.docx'),
+(5, NULL, 'asd', NULL, NULL, NULL, NULL, 2, NULL),
+(6, NULL, NULL, NULL, NULL, NULL, NULL, 3, 'Daftar_Pustaka_Pupuk_Kompos.docx');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `el_field_tambahan`
 --
 
 CREATE TABLE `el_field_tambahan` (
@@ -81,7 +139,7 @@ CREATE TABLE `el_field_tambahan` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_field_tambahan`
+-- Dumping data for table `el_field_tambahan`
 --
 
 INSERT INTO `el_field_tambahan` (`id`, `nama`, `value`) VALUES
@@ -91,7 +149,7 @@ INSERT INTO `el_field_tambahan` (`id`, `nama`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_jawaban`
+-- Table structure for table `el_jawaban`
 --
 
 CREATE TABLE `el_jawaban` (
@@ -99,6 +157,7 @@ CREATE TABLE `el_jawaban` (
   `id_ujian` int(11) NOT NULL,
   `id_siswa` int(11) NOT NULL,
   `jawaban` text NOT NULL,
+  `jawaban_file` text DEFAULT NULL,
   `nilai_pg` int(11) NOT NULL,
   `nilai_essay` int(11) DEFAULT NULL,
   `nilai_total` double DEFAULT NULL,
@@ -107,19 +166,28 @@ CREATE TABLE `el_jawaban` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `el_jawaban`
+-- Dumping data for table `el_jawaban`
 --
 
-INSERT INTO `el_jawaban` (`id_jawaban`, `id_ujian`, `id_siswa`, `jawaban`, `nilai_pg`, `nilai_essay`, `nilai_total`, `jumlah_soal`, `tgl`) VALUES
-(2, 1, 2, '1:C,3:aaa', 1, 2, 83.333333333333, 2, '0000-00-00 00:00:00'),
-(3, 1, 2, '1:C,3:asdsdasdsa', 3, 3, 100, 2, '0000-00-00 00:00:00'),
-(4, 3, 2, '1:C,3:adasd,5:B,6:adasdas', 3, 5, 66.666666666667, 4, '2020-05-02 05:04:00'),
-(5, 4, 2, '7:A,8:skfbdkfbkjdbf', 70, 100, 100, 2, '2021-04-15 14:46:00');
+INSERT INTO `el_jawaban` (`id_jawaban`, `id_ujian`, `id_siswa`, `jawaban`, `jawaban_file`, `nilai_pg`, `nilai_essay`, `nilai_total`, `jumlah_soal`, `tgl`) VALUES
+(2, 1, 2, '1:C,3:aaa', NULL, 1, 2, 83.333333333333, 2, '0000-00-00 00:00:00'),
+(3, 1, 2, '1:C,3:asdsdasdsa', NULL, 3, 3, 100, 2, '0000-00-00 00:00:00'),
+(4, 3, 2, '1:C,3:adasd,5:B,6:adasdas', NULL, 3, 5, 66.666666666667, 4, '2020-05-02 05:04:00'),
+(5, 4, 2, '7:A,8:skfbdkfbkjdbf', NULL, 70, 100, 100, 2, '2021-04-15 14:46:00'),
+(6, 8, 3, '12:B,13:ldf', NULL, 0, NULL, 0, 2, '2021-06-23 16:33:00'),
+(7, 11, 3, '17:A,18:A,19:yygghg', NULL, 70, NULL, 70, 3, '2021-07-21 22:17:00'),
+(8, 12, 14, '20:A,21:A,22:A,23:A', NULL, 100, NULL, 100, 4, '2021-07-23 11:01:00'),
+(9, 13, 3, '24:A,25:A,26:A,27:A,28:A,29:A,30:A,31:A,32:A,33:A,34:A,35:aaaa,36:asss,37:sssddd,38:sdsds,39:dsdsds', NULL, 70, 80, 94, 16, '2021-08-11 17:52:00'),
+(10, 14, 3, '40:A,41:A,42:A,43:A,44:A,45:ssss,46:sss,47:ssss,48:dddd,49:ghghgh', NULL, 70, 80, 94, 10, '2021-08-11 17:59:00'),
+(11, 15, 3, '50:A,51:A,52:A,53:A,54:A,55:aaa,56:aaa,57:aaa,58:aaa,59:aaa', NULL, 70, 80, 94, 10, '2021-08-11 18:36:00'),
+(12, 16, 3, '60:A,61:A,62:A,63:A,64:A,65:fdfd,66:fgf,67:fgf,68:fggf,69:fgf', NULL, 70, 80, 94, 10, '2021-08-13 09:56:00'),
+(13, 18, 3, '18:C,19:asd', NULL, 0, 100, 30, 2, '2021-09-01 00:10:00'),
+(17, 19, 3, '20:C,21:', 'jaw.docx', 100, 80, 94, 2, '2021-09-01 09:38:00');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_kelas`
+-- Table structure for table `el_kelas`
 --
 
 CREATE TABLE `el_kelas` (
@@ -131,7 +199,7 @@ CREATE TABLE `el_kelas` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_kelas`
+-- Dumping data for table `el_kelas`
 --
 
 INSERT INTO `el_kelas` (`id`, `nama`, `parent_id`, `urutan`, `aktif`) VALUES
@@ -157,7 +225,7 @@ INSERT INTO `el_kelas` (`id`, `nama`, `parent_id`, `urutan`, `aktif`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_kelas_siswa`
+-- Table structure for table `el_kelas_siswa`
 --
 
 CREATE TABLE `el_kelas_siswa` (
@@ -168,26 +236,28 @@ CREATE TABLE `el_kelas_siswa` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_kelas_siswa`
+-- Dumping data for table `el_kelas_siswa`
 --
 
 INSERT INTO `el_kelas_siswa` (`id`, `kelas_id`, `siswa_id`, `aktif`) VALUES
 (1, 3, 1, 0),
 (2, 2, 1, 0),
-(3, 7, 2, 1),
-(4, 7, 3, 0),
+(3, 7, 2, 0),
+(4, 7, 3, 1),
 (5, 12, 4, 1),
-(6, 8, 3, 1),
+(6, 8, 3, 0),
 (7, 2, 11, 1),
 (9, 4, 1, 1),
 (10, 1, 12, 0),
 (11, 4, 12, 1),
-(12, 7, 13, 1);
+(12, 7, 13, 1),
+(13, 2, 2, 1),
+(14, 5, 14, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_komentar`
+-- Table structure for table `el_komentar`
 --
 
 CREATE TABLE `el_komentar` (
@@ -202,7 +272,7 @@ CREATE TABLE `el_komentar` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_login`
+-- Table structure for table `el_login`
 --
 
 CREATE TABLE `el_login` (
@@ -216,7 +286,7 @@ CREATE TABLE `el_login` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_login`
+-- Dumping data for table `el_login`
 --
 
 INSERT INTO `el_login` (`id`, `username`, `password`, `siswa_id`, `pengajar_id`, `is_admin`, `reset_kode`) VALUES
@@ -227,16 +297,17 @@ INSERT INTO `el_login` (`id`, `username`, `password`, `siswa_id`, `pengajar_id`,
 (5, 'murid3@gmail.com', '95fad2832018df75ef8b9356edab728c', 3, NULL, 0, NULL),
 (6, 'alvinodicky548@gmail.com', 'ee0b6db238b075d0da86340048fb147a', 4, NULL, 0, NULL),
 (7, 'alvinodicky@gmail.com', '43b93443937ea642a9a43e77fd5d8f77', NULL, 3, 0, NULL),
-(12, 'faizazharr@gmail.com', '912ec803b2ce49e4a541068d495ab570', NULL, 4, 0, NULL),
 (13, 'satan@gmail.com', '53e8254b3222a33f42b5a6b3d156056c', 11, NULL, 0, NULL),
 (14, 'oliver@gmail.com', 'acae273a5a5c88b46b36d65a25f5f435', NULL, 5, 1, NULL),
 (15, 'c@gmail.com', '4a8a08f09d37b73795649038408b5f33', 12, NULL, 0, NULL),
-(16, 'b@gmail.com', '92eb5ffee6ae2fec3ad71c777531578f', 13, NULL, 0, NULL);
+(16, 'b@gmail.com', '92eb5ffee6ae2fec3ad71c777531578f', 13, NULL, 0, NULL),
+(17, 'murid5@gmail.com', 'f6bfafc0cbece13b4fc46a52ff3236d6', 14, NULL, 0, NULL),
+(18, 'lookdesgn@gmail.com', 'ff1826707096a6fea40c9d7c7fce2552', NULL, 7, 0, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_login_log`
+-- Table structure for table `el_login_log`
 --
 
 CREATE TABLE `el_login_log` (
@@ -248,7 +319,7 @@ CREATE TABLE `el_login_log` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_login_log`
+-- Dumping data for table `el_login_log`
 --
 
 INSERT INTO `el_login_log` (`id`, `login_id`, `lasttime`, `agent`, `last_activity`) VALUES
@@ -369,7 +440,7 @@ INSERT INTO `el_login_log` (`id`, `login_id`, `lasttime`, `agent`, `last_activit
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_mapel`
+-- Table structure for table `el_mapel`
 --
 
 CREATE TABLE `el_mapel` (
@@ -380,7 +451,7 @@ CREATE TABLE `el_mapel` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_mapel`
+-- Dumping data for table `el_mapel`
 --
 
 INSERT INTO `el_mapel` (`id`, `nama`, `info`, `aktif`) VALUES
@@ -396,7 +467,7 @@ INSERT INTO `el_mapel` (`id`, `nama`, `info`, `aktif`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_mapel_ajar`
+-- Table structure for table `el_mapel_ajar`
 --
 
 CREATE TABLE `el_mapel_ajar` (
@@ -410,19 +481,16 @@ CREATE TABLE `el_mapel_ajar` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_mapel_ajar`
+-- Dumping data for table `el_mapel_ajar`
 --
 
 INSERT INTO `el_mapel_ajar` (`id`, `hari_id`, `jam_mulai`, `jam_selesai`, `pengajar_id`, `mapel_kelas_id`, `aktif`) VALUES
-(1, 1, '08:00:00', '10:30:00', 2, 11, 1),
-(2, 3, '11:00:00', '13:00:00', 2, 11, 1),
-(3, 1, '12:33:00', '01:36:00', 3, 3, 1),
-(4, 2, '13:00:00', '14:50:00', 2, 1, 1);
+(28, 5, '10:02:00', '11:00:00', 2, 16, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_mapel_kelas`
+-- Table structure for table `el_mapel_kelas`
 --
 
 CREATE TABLE `el_mapel_kelas` (
@@ -433,7 +501,7 @@ CREATE TABLE `el_mapel_kelas` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_mapel_kelas`
+-- Dumping data for table `el_mapel_kelas`
 --
 
 INSERT INTO `el_mapel_kelas` (`id`, `kelas_id`, `mapel_id`, `aktif`) VALUES
@@ -452,12 +520,17 @@ INSERT INTO `el_mapel_kelas` (`id`, `kelas_id`, `mapel_id`, `aktif`) VALUES
 (13, 1, 2, 0),
 (16, 7, 2, 1),
 (17, 7, 3, 1),
-(18, 7, 4, 1);
+(18, 7, 4, 1),
+(20, 1, 6, 1),
+(21, 3, 6, 1),
+(22, 5, 3, 1),
+(23, 5, 4, 1),
+(24, 5, 5, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_materi`
+-- Table structure for table `el_materi`
 --
 
 CREATE TABLE `el_materi` (
@@ -474,20 +547,18 @@ CREATE TABLE `el_materi` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_materi`
+-- Dumping data for table `el_materi`
 --
 
 INSERT INTO `el_materi` (`id`, `mapel_id`, `pengajar_id`, `siswa_id`, `judul`, `konten`, `file`, `tgl_posting`, `publish`, `views`) VALUES
-(1, 1, 2, NULL, 'skuy living', NULL, 'skuy_living_1581519810.docx', '2020-02-12 22:03:30', 1, 1),
-(4, 2, 2, NULL, 'opening', 'data fill', 'catatan7.txt', '2020-05-01 06:52:13', 1, 1),
-(5, 2, 2, NULL, 'coba', 'tugas 1', 'WhatsApp-Image-2021-04-07-at-11.05.17.jpg', '2021-04-15 09:36:45', 1, 1),
-(6, 2, 2, NULL, 'one', 'kdfdfnd', '630729-200.png', '2021-04-18 12:39:57', 1, 1),
-(7, 6, 2, NULL, '', 'test', 'GhalyFadhillah_B.jpg', '2021-06-18 18:29:38', 1, 1);
+(12, 2, 2, NULL, 'materi 6', 'materi', '630729-2001.png', '2021-08-13 04:48:13', 1, 1),
+(11, 2, 2, NULL, 'materi 2', 'materi harus di pelajari', '11.png', '2021-08-11 13:27:27', 1, 1),
+(10, 2, 2, NULL, 'Materi 1', 'di baca yaa', '1.png', '2021-08-11 12:39:53', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_materi_kelas`
+-- Table structure for table `el_materi_kelas`
 --
 
 CREATE TABLE `el_materi_kelas` (
@@ -497,7 +568,7 @@ CREATE TABLE `el_materi_kelas` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_materi_kelas`
+-- Dumping data for table `el_materi_kelas`
 --
 
 INSERT INTO `el_materi_kelas` (`id`, `materi_id`, `kelas_id`) VALUES
@@ -505,12 +576,17 @@ INSERT INTO `el_materi_kelas` (`id`, `materi_id`, `kelas_id`) VALUES
 (2, 4, 2),
 (3, 5, 7),
 (4, 6, 7),
-(5, 7, 7);
+(5, 7, 7),
+(6, 8, 5),
+(7, 9, 7),
+(8, 10, 7),
+(9, 11, 7),
+(10, 12, 7);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_messages`
+-- Table structure for table `el_messages`
 --
 
 CREATE TABLE `el_messages` (
@@ -524,21 +600,26 @@ CREATE TABLE `el_messages` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_messages`
+-- Dumping data for table `el_messages`
 --
 
 INSERT INTO `el_messages` (`id`, `type_id`, `content`, `owner_id`, `sender_receiver_id`, `date`, `opened`) VALUES
 (1, 2, '<p>saya sangat senang belajar e-learning</p>\r\n', 2, 1, '2019-12-14 19:30:49', 1),
 (8, 1, '<p>cgcgcgcgcg</p>\r\n', 5, 1, '2020-01-04 02:11:39', 1),
 (5, 2, '<p>ok bos&nbsp;</p>\r\n', 2, 1, '2019-12-14 19:32:37', 1),
-(16, 1, 'opo le', 3, 2, '2020-04-02 19:30:44', 0),
+(29, 1, 'pesan', 3, 5, '2021-08-13 01:44:58', 0),
 (20, 1, 'Nuhun euy!', 1, 2, '2020-04-29 19:43:15', 0),
-(23, 1, 'test ', 3, 4, '2021-06-08 04:26:31', 0);
+(28, 1, 'pesan', 3, 18, '2021-08-13 01:44:31', 0),
+(24, 1, 'ddd', 18, 17, '2021-07-23 15:56:09', 0),
+(25, 1, 'pesan guru bahasa ingrris', 3, 5, '2021-08-11 13:18:57', 0),
+(27, 1, 'pesan\r\n', 3, 4, '2021-08-13 01:43:56', 0),
+(30, 1, 'siap pak', 5, 3, '2021-08-13 06:46:01', 0),
+(31, 1, 'pesan guru', 3, 5, '2021-08-13 04:40:42', 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_nilai_tugas`
+-- Table structure for table `el_nilai_tugas`
 --
 
 CREATE TABLE `el_nilai_tugas` (
@@ -549,7 +630,7 @@ CREATE TABLE `el_nilai_tugas` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_nilai_tugas`
+-- Dumping data for table `el_nilai_tugas`
 --
 
 INSERT INTO `el_nilai_tugas` (`id`, `nilai`, `tugas_id`, `siswa_id`) VALUES
@@ -558,7 +639,7 @@ INSERT INTO `el_nilai_tugas` (`id`, `nilai`, `tugas_id`, `siswa_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_pengajar`
+-- Table structure for table `el_pengajar`
 --
 
 CREATE TABLE `el_pengajar` (
@@ -575,21 +656,22 @@ CREATE TABLE `el_pengajar` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_pengajar`
+-- Dumping data for table `el_pengajar`
 --
 
 INSERT INTO `el_pengajar` (`id`, `nip`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tgl_lahir`, `alamat`, `foto`, `status_id`, `id_mapel`) VALUES
-(1, '150212046', 'Alvino Pam', 'Laki-laki', '', NULL, 'PBB', 'pengajar-almadani.jpeg', 1, '1'),
-(2, '123456', 'Dicky Pamungkas', 'Laki-laki', 'penarik', '2999-03-14', 'pbb', 'PP.jpg', 1, '6'),
+(1, '150212046', 'Alvino Pam', 'Laki-laki', '', NULL, 'PBB', '630729-2005.png', 1, '1'),
+(2, '123456', 'Dicky Pamungkas', 'Laki-laki', 'penarik', '2000-03-14', 'pbb', '630729-2008.png', 1, '2'),
 (3, '12345', 'diki', 'Laki-laki', 'penarik', '2000-02-16', 'pbb', NULL, 0, '3'),
 (4, '1234123412341234', 'asdf', 'option1', 'asdf', NULL, 'ASDF', NULL, 0, '3'),
 (5, '666', 'Oliver', 'Laki-laki', 'cekcek', '2020-04-22', 'Cikole', NULL, 2, '4'),
-(6, '12', 'cobaa', 'Laki-laki', 'penarik', '2021-04-16', 'bandung', NULL, 0, NULL);
+(6, '12', 'cobaa', 'Laki-laki', 'penarik', '2021-04-16', 'bandung', NULL, 0, NULL),
+(7, '07288733', 'lookdesgn', 'Perempuan', 'bandung', '2021-07-23', 'cikoneng', NULL, 1, '3');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_pengaturan`
+-- Table structure for table `el_pengaturan`
 --
 
 CREATE TABLE `el_pengaturan` (
@@ -599,7 +681,7 @@ CREATE TABLE `el_pengaturan` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_pengaturan`
+-- Dumping data for table `el_pengaturan`
 --
 
 INSERT INTO `el_pengaturan` (`id`, `nama`, `value`) VALUES
@@ -636,7 +718,7 @@ INSERT INTO `el_pengaturan` (`id`, `nama`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_pengumuman`
+-- Table structure for table `el_pengumuman`
 --
 
 CREATE TABLE `el_pengumuman` (
@@ -651,16 +733,16 @@ CREATE TABLE `el_pengumuman` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_pengumuman`
+-- Dumping data for table `el_pengumuman`
 --
 
 INSERT INTO `el_pengumuman` (`id`, `judul`, `konten`, `tgl_tampil`, `tgl_tutup`, `tampil_siswa`, `tampil_pengajar`, `pengajar_id`) VALUES
-(1, 'pkn', '<p>haaiiii sekarang kita ada pengumuman yaaa</p>\r\n', '2020-02-13', '2020-03-10', 1, 1, 2);
+(1, 'Jadwal Rapat ', '<p>haaiiii sekarang kita ada pengumuman yaaa</p>\r\n', '2020-02-13', '2020-02-13', 1, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_pilihan`
+-- Table structure for table `el_pilihan`
 --
 
 CREATE TABLE `el_pilihan` (
@@ -673,7 +755,7 @@ CREATE TABLE `el_pilihan` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_pilihan`
+-- Dumping data for table `el_pilihan`
 --
 
 INSERT INTO `el_pilihan` (`id`, `pertanyaan_id`, `konten`, `kunci`, `urutan`, `aktif`) VALUES
@@ -691,7 +773,7 @@ INSERT INTO `el_pilihan` (`id`, `pertanyaan_id`, `konten`, `kunci`, `urutan`, `a
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_siswa`
+-- Table structure for table `el_siswa`
 --
 
 CREATE TABLE `el_siswa` (
@@ -709,57 +791,63 @@ CREATE TABLE `el_siswa` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_siswa`
+-- Dumping data for table `el_siswa`
 --
 
 INSERT INTO `el_siswa` (`id`, `nis`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tgl_lahir`, `agama`, `alamat`, `tahun_masuk`, `foto`, `status_id`) VALUES
 (1, '1151', 'Afriadi', 'Laki-laki', 'ACEH SELATAN', '2005-04-21', 'ISLAM', 'Pasi Kuala Bau, Kluet Utara, Kabupaten Aceh Selatan, Aceh 23771', 2018, 'siswa-afriadi-1151.jpg', 1),
 (2, '1157', 'SAIYIDA NATISA', 'Perempuan', 'aceh selatan', '2002-03-07', 'ISLAM', 'aceh selatan', 2018, NULL, 1),
-(3, '1152', 'FITRIA SUKMA', 'Perempuan', 'aceh selatan', '2002-10-07', 'ISLAM', 'aceh selatan', 2018, 'siswa-fitria-sukma-11521.jpg', 1),
+(3, '1152', 'FITRIA SUKMA', 'Perempuan', 'aceh selatan', '2002-10-07', 'ISLAM', 'aceh selatan', 2018, '630729-2003.png', 1),
 (4, '12345', 'dicky', 'Laki-laki', 'penarik', '2000-01-14', 'KATOLIK', 'pbb', 2018, NULL, 0),
 (9, '123123123123', 'asdf', 'option1', 'asdf', NULL, NULL, 'asdf', 0000, NULL, 0),
 (10, '666', 'Satan', 'Laki-laki', 'Kandang', '0000-00-00', 'BUDHA', 'asana', 2020, NULL, 3),
 (11, '666', 'Satan', 'Laki-laki', 'cekcek', '2020-04-15', 'ISLAM', 'asana', 2021, NULL, 1),
 (12, '33333', 'c', 'Perempuan', 'bandung', NULL, NULL, 'Bengkulu', 2020, NULL, 1),
-(13, '555', 'b', 'Perempuan', 'bandung', NULL, NULL, 'b', 2020, NULL, 1);
+(13, '555', 'b', 'Perempuan', 'bandung', NULL, NULL, 'b', 2020, NULL, 1),
+(14, '55555', 'murid 5', 'Laki-laki', 'bandung', NULL, NULL, 'Bengkulu', 2019, NULL, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_soal`
+-- Table structure for table `el_soal`
 --
 
 CREATE TABLE `el_soal` (
   `id_soal` int(11) NOT NULL,
-  `gambar` text DEFAULT NULL,
-  `pertanyaan` text NOT NULL,
-  `pg_a` text DEFAULT NULL,
-  `pg_b` text DEFAULT NULL,
-  `pg_c` text DEFAULT NULL,
-  `jawaban_pg` varchar(32) DEFAULT NULL,
-  `tipe` int(11) NOT NULL COMMENT '1=pg,2=essay',
+  `id_banksoal` int(11) NOT NULL,
   `pengajar_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `el_soal`
+-- Dumping data for table `el_soal`
 --
 
-INSERT INTO `el_soal` (`id_soal`, `gambar`, `pertanyaan`, `pg_a`, `pg_b`, `pg_c`, `jawaban_pg`, `tipe`, `pengajar_id`) VALUES
-(1, NULL, '1+1=0 ?', 'A.Ya', 'B.Tidak', 'C.Pertanyaan macam apa ini', 'C', 1, 2),
-(3, NULL, 'Jelaskan menurut anda bumi bulat atau datar?', NULL, NULL, NULL, NULL, 2, 2),
-(5, NULL, 'aasdasd', 'A.a', 'B.d', 'C.s', 'C', 1, 2),
-(6, NULL, 'dasdasdasd??', NULL, NULL, NULL, NULL, 2, 2),
-(7, NULL, 'coba ?', 'A.hitam', 'B.merah', 'C.ragu', 'A', 1, 2),
-(8, NULL, 'coba\r\n', NULL, NULL, NULL, NULL, 2, 2),
-(9, NULL, 'Siapakah anda', 'A.Ayam', 'B.Kucing', 'C.Anjing', 'A', 1, 2),
-(10, 'PP.jpg', 'aaa', 'A.aa', 'B.aaa', 'C.aaa', 'A', 1, 2),
-(11, NULL, 'asssss', 'A.assss', 'B.sasssas', 'C.asassa', 'A', 1, 2);
+INSERT INTO `el_soal` (`id_soal`, `id_banksoal`, `pengajar_id`) VALUES
+(2, 2, 2),
+(3, 3, 2),
+(4, 4, 2),
+(5, 5, 2),
+(6, 5, 2),
+(7, 2, 2),
+(8, 3, 2),
+(9, 4, 2),
+(10, 5, 2),
+(11, 2, 2),
+(12, 3, 2),
+(13, 4, 2),
+(14, 2, 2),
+(15, 3, 2),
+(16, 4, 2),
+(17, 6, 2),
+(18, 2, 2),
+(19, 3, 2),
+(20, 2, 2),
+(21, 4, 2);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_tugas`
+-- Table structure for table `el_tugas`
 --
 
 CREATE TABLE `el_tugas` (
@@ -776,21 +864,21 @@ CREATE TABLE `el_tugas` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_tugas`
+-- Dumping data for table `el_tugas`
 --
 
 INSERT INTO `el_tugas` (`id`, `mapel_id`, `pengajar_id`, `judul`, `info`, `file`, `tgl_buat`, `durasi`, `aktif`, `tampil_siswa`) VALUES
-(4, 2, 2, 'Tugas WFH', 'COBA kerjakan selama korona', 'catatan9.txt', '2020-05-01 09:39:19', '2020-05-14 13:00:00', 1, 1),
-(6, 2, 2, 'skuy living', 'ddd', '630729-200.png', '2021-04-15 05:17:21', '2021-04-16 12:19:00', 1, 1),
-(7, 2, 2, 'one', 'tugas', 'WhatsApp-Image-2021-04-07-at-11.05.17.jpg', '2021-04-15 09:40:04', '2021-04-12 16:39:00', 1, 1),
-(8, 2, 2, 'dggdsg', 'xvxc', '630729-2002.png', '2021-04-18 12:37:37', '2021-04-19 17:37:00', 1, 1),
-(9, 2, 2, 'hhhh', '.....', 'food.jpg', '2021-06-08 03:56:26', '2021-06-09 11:56:00', 1, 1),
-(10, 6, 2, 'Test', 'pesan', 'GhalyFadhillah.pdf', '2021-06-18 18:50:42', '2021-06-18 23:50:00', 1, 1);
+(17, 2, 2, 'tugas 1', 'kerjakan dengan benar', '3.png', '2021-08-11 12:25:35', '2021-08-12 10:00:00', 1, 1),
+(18, 2, 2, 'tugas 2', 'kerjakan dengan baik', '2.png', '2021-08-11 12:31:17', '2021-08-12 19:00:00', 1, 1),
+(19, 2, 2, 'tugas 3', 'tugas di kerjakan yaa', '31.png', '2021-08-11 13:22:27', '2021-08-12 19:00:00', 1, 1),
+(21, 2, 2, 'tugas5', 'tugas 5', '630729-2005.png', '2021-08-13 04:45:24', '2021-08-15 19:00:00', 1, 1),
+(22, 2, 2, 'tugas', 'ddd', '8.png', '2021-08-13 04:46:47', '2021-08-13 11:46:00', 1, 1),
+(23, 2, 2, 'tugas c', 'nnn', '12.png', '2021-08-30 10:10:31', '2021-08-31 15:10:00', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_tugas_kelas`
+-- Table structure for table `el_tugas_kelas`
 --
 
 CREATE TABLE `el_tugas_kelas` (
@@ -800,7 +888,7 @@ CREATE TABLE `el_tugas_kelas` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_tugas_kelas`
+-- Dumping data for table `el_tugas_kelas`
 --
 
 INSERT INTO `el_tugas_kelas` (`id`, `tugas_id`, `kelas_id`) VALUES
@@ -809,12 +897,24 @@ INSERT INTO `el_tugas_kelas` (`id`, `tugas_id`, `kelas_id`) VALUES
 (7, 7, 7),
 (8, 8, 7),
 (9, 9, 7),
-(10, 10, 7);
+(10, 10, 7),
+(11, 11, 7),
+(12, 12, 7),
+(13, 13, 2),
+(14, 14, 7),
+(15, 15, 7),
+(16, 16, 5),
+(17, 17, 7),
+(18, 18, 7),
+(19, 19, 7),
+(21, 21, 7),
+(22, 22, 7),
+(23, 23, 7);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_tugas_kumpul`
+-- Table structure for table `el_tugas_kumpul`
 --
 
 CREATE TABLE `el_tugas_kumpul` (
@@ -827,16 +927,25 @@ CREATE TABLE `el_tugas_kumpul` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `el_tugas_kumpul`
+-- Dumping data for table `el_tugas_kumpul`
 --
 
 INSERT INTO `el_tugas_kumpul` (`id`, `kelas_id`, `siswa_id`, `tugas_id`, `file`, `nilai`) VALUES
-(3, 7, 2, 6, '630729-2001.png', '80');
+(3, 7, 2, 6, '630729-2001.png', '80'),
+(4, 7, 3, 11, '6051.png', '10'),
+(5, 7, 3, 12, '6053.png', '0'),
+(6, 7, 3, 11, '6054.png', '0'),
+(7, 7, 3, 12, '6055.png', '0'),
+(8, NULL, 3, 12, '6056.png', '0'),
+(9, 7, 3, 12, '6057.png', '0'),
+(10, 7, 3, 18, '11.png', '85'),
+(11, 7, 3, 19, '630729-2003.png', '85'),
+(12, 7, 3, 24, '81.png', '100');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_tugas_pertanyaan`
+-- Table structure for table `el_tugas_pertanyaan`
 --
 
 CREATE TABLE `el_tugas_pertanyaan` (
@@ -848,7 +957,7 @@ CREATE TABLE `el_tugas_pertanyaan` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data untuk tabel `el_tugas_pertanyaan`
+-- Dumping data for table `el_tugas_pertanyaan`
 --
 
 INSERT INTO `el_tugas_pertanyaan` (`id`, `pertanyaan`, `urutan`, `tugas_id`, `aktif`) VALUES
@@ -859,7 +968,7 @@ INSERT INTO `el_tugas_pertanyaan` (`id`, `pertanyaan`, `urutan`, `tugas_id`, `ak
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_ujian`
+-- Table structure for table `el_ujian`
 --
 
 CREATE TABLE `el_ujian` (
@@ -869,24 +978,25 @@ CREATE TABLE `el_ujian` (
   `tgl_expired` date NOT NULL,
   `waktu` int(11) NOT NULL,
   `mapel_kelas_id` int(11) NOT NULL,
-  `pengajar_id` int(11) NOT NULL
+  `pengajar_id` int(11) NOT NULL,
+  `is_verify` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `el_ujian`
+-- Dumping data for table `el_ujian`
 --
 
-INSERT INTO `el_ujian` (`id`, `judul`, `tgl_dibuat`, `tgl_expired`, `waktu`, `mapel_kelas_id`, `pengajar_id`) VALUES
-(1, 'Testingg', '2020-04-30', '2020-05-02', 30, 11, 2),
-(2, 'coba lagi dong', '2020-04-29', '2020-05-02', 20, 3, 2),
-(3, 'asdasdasd', '2020-05-01', '2020-05-04', 10, 11, 2),
-(4, 'UAS', '2021-04-15', '2021-04-16', 120, 11, 2),
-(7, 'PPKN RINGAN', '2021-06-23', '2021-06-24', 69, 11, 2);
+INSERT INTO `el_ujian` (`id`, `judul`, `tgl_dibuat`, `tgl_expired`, `waktu`, `mapel_kelas_id`, `pengajar_id`, `is_verify`) VALUES
+(13, 'Ujian 1', '2021-08-11', '2021-08-12', 30, 16, 2, 1),
+(14, 'ujian 2', '2021-08-11', '2021-08-12', 15, 16, 2, 1),
+(15, 'UAS', '2021-08-11', '2021-08-12', 30, 16, 2, 0),
+(16, 'UJian 1', '2021-08-13', '2021-08-14', 30, 16, 2, 0),
+(19, 'Coding Dasar', '2021-09-01', '2021-09-02', 100, 16, 2, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `el_ujian_soal`
+-- Table structure for table `el_ujian_soal`
 --
 
 CREATE TABLE `el_ujian_soal` (
@@ -897,54 +1007,60 @@ CREATE TABLE `el_ujian_soal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `el_ujian_soal`
+-- Dumping data for table `el_ujian_soal`
 --
 
 INSERT INTO `el_ujian_soal` (`id_ujian_soal`, `id_ujian`, `id_soal`, `aktif`) VALUES
-(1, 2, 1, 1),
-(2, 2, 3, 0),
-(3, 1, 1, 1),
-(5, 1, 3, 1),
-(6, 3, 1, 1),
-(7, 3, 3, 1),
-(8, 3, 5, 1),
-(9, 3, 6, 1),
-(10, 4, 7, 1),
-(11, 4, 8, 1),
-(12, 7, 9, 1),
-(13, 7, 10, 1),
-(14, 7, 11, 1);
+(7, 13, 8, 1),
+(8, 13, 9, 1),
+(9, 13, 10, 1),
+(10, 14, 11, 1),
+(11, 14, 12, 1),
+(13, 17, 14, 1),
+(14, 17, 15, 1),
+(15, 17, 16, 0),
+(16, 14, 17, 1),
+(17, 18, 18, 1),
+(18, 18, 19, 1),
+(19, 19, 20, 1),
+(20, 19, 21, 1);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `el_absen`
+-- Indexes for table `el_absen`
 --
 ALTER TABLE `el_absen`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `el_absen_siswa`
+-- Indexes for table `el_absen_siswa`
 --
 ALTER TABLE `el_absen_siswa`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `el_field_tambahan`
+-- Indexes for table `el_banksoal`
+--
+ALTER TABLE `el_banksoal`
+  ADD PRIMARY KEY (`id_banksoal`);
+
+--
+-- Indexes for table `el_field_tambahan`
 --
 ALTER TABLE `el_field_tambahan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `el_jawaban`
+-- Indexes for table `el_jawaban`
 --
 ALTER TABLE `el_jawaban`
   ADD PRIMARY KEY (`id_jawaban`);
 
 --
--- Indeks untuk tabel `el_kelas`
+-- Indexes for table `el_kelas`
 --
 ALTER TABLE `el_kelas`
   ADD PRIMARY KEY (`id`),
@@ -952,7 +1068,7 @@ ALTER TABLE `el_kelas`
   ADD KEY `parent_id_2` (`parent_id`);
 
 --
--- Indeks untuk tabel `el_kelas_siswa`
+-- Indexes for table `el_kelas_siswa`
 --
 ALTER TABLE `el_kelas_siswa`
   ADD PRIMARY KEY (`id`),
@@ -960,7 +1076,7 @@ ALTER TABLE `el_kelas_siswa`
   ADD KEY `kelas_id_2` (`kelas_id`,`siswa_id`);
 
 --
--- Indeks untuk tabel `el_komentar`
+-- Indexes for table `el_komentar`
 --
 ALTER TABLE `el_komentar`
   ADD PRIMARY KEY (`id`),
@@ -969,7 +1085,7 @@ ALTER TABLE `el_komentar`
   ADD KEY `login_id_3` (`login_id`,`materi_id`);
 
 --
--- Indeks untuk tabel `el_login`
+-- Indexes for table `el_login`
 --
 ALTER TABLE `el_login`
   ADD PRIMARY KEY (`id`),
@@ -977,7 +1093,7 @@ ALTER TABLE `el_login`
   ADD KEY `username_2` (`username`,`siswa_id`,`pengajar_id`);
 
 --
--- Indeks untuk tabel `el_login_log`
+-- Indexes for table `el_login_log`
 --
 ALTER TABLE `el_login_log`
   ADD PRIMARY KEY (`id`),
@@ -986,13 +1102,13 @@ ALTER TABLE `el_login_log`
   ADD KEY `login_id_3` (`login_id`);
 
 --
--- Indeks untuk tabel `el_mapel`
+-- Indexes for table `el_mapel`
 --
 ALTER TABLE `el_mapel`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `el_mapel_ajar`
+-- Indexes for table `el_mapel_ajar`
 --
 ALTER TABLE `el_mapel_ajar`
   ADD PRIMARY KEY (`id`),
@@ -1000,7 +1116,7 @@ ALTER TABLE `el_mapel_ajar`
   ADD KEY `hari_id_2` (`hari_id`,`pengajar_id`,`mapel_kelas_id`);
 
 --
--- Indeks untuk tabel `el_mapel_kelas`
+-- Indexes for table `el_mapel_kelas`
 --
 ALTER TABLE `el_mapel_kelas`
   ADD PRIMARY KEY (`id`),
@@ -1008,7 +1124,7 @@ ALTER TABLE `el_mapel_kelas`
   ADD KEY `kelas_id_2` (`kelas_id`,`mapel_id`);
 
 --
--- Indeks untuk tabel `el_materi`
+-- Indexes for table `el_materi`
 --
 ALTER TABLE `el_materi`
   ADD PRIMARY KEY (`id`),
@@ -1016,7 +1132,7 @@ ALTER TABLE `el_materi`
   ADD KEY `mapel_id_2` (`mapel_id`,`pengajar_id`,`siswa_id`);
 
 --
--- Indeks untuk tabel `el_materi_kelas`
+-- Indexes for table `el_materi_kelas`
 --
 ALTER TABLE `el_materi_kelas`
   ADD PRIMARY KEY (`id`),
@@ -1024,7 +1140,7 @@ ALTER TABLE `el_materi_kelas`
   ADD KEY `materi_id_2` (`materi_id`,`kelas_id`);
 
 --
--- Indeks untuk tabel `el_messages`
+-- Indexes for table `el_messages`
 --
 ALTER TABLE `el_messages`
   ADD PRIMARY KEY (`id`),
@@ -1032,7 +1148,7 @@ ALTER TABLE `el_messages`
   ADD KEY `type_id_2` (`type_id`,`owner_id`,`sender_receiver_id`);
 
 --
--- Indeks untuk tabel `el_nilai_tugas`
+-- Indexes for table `el_nilai_tugas`
 --
 ALTER TABLE `el_nilai_tugas`
   ADD PRIMARY KEY (`id`),
@@ -1040,7 +1156,7 @@ ALTER TABLE `el_nilai_tugas`
   ADD KEY `tugas_id_2` (`tugas_id`,`siswa_id`);
 
 --
--- Indeks untuk tabel `el_pengajar`
+-- Indexes for table `el_pengajar`
 --
 ALTER TABLE `el_pengajar`
   ADD PRIMARY KEY (`id`),
@@ -1048,13 +1164,13 @@ ALTER TABLE `el_pengajar`
   ADD KEY `nip_2` (`nip`);
 
 --
--- Indeks untuk tabel `el_pengaturan`
+-- Indexes for table `el_pengaturan`
 --
 ALTER TABLE `el_pengaturan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `el_pengumuman`
+-- Indexes for table `el_pengumuman`
 --
 ALTER TABLE `el_pengumuman`
   ADD PRIMARY KEY (`id`),
@@ -1063,7 +1179,7 @@ ALTER TABLE `el_pengumuman`
   ADD KEY `pengajar_id_3` (`pengajar_id`);
 
 --
--- Indeks untuk tabel `el_pilihan`
+-- Indexes for table `el_pilihan`
 --
 ALTER TABLE `el_pilihan`
   ADD PRIMARY KEY (`id`),
@@ -1071,7 +1187,7 @@ ALTER TABLE `el_pilihan`
   ADD KEY `pertanyaan_id_2` (`pertanyaan_id`,`kunci`);
 
 --
--- Indeks untuk tabel `el_siswa`
+-- Indexes for table `el_siswa`
 --
 ALTER TABLE `el_siswa`
   ADD PRIMARY KEY (`id`),
@@ -1079,13 +1195,13 @@ ALTER TABLE `el_siswa`
   ADD KEY `nis_2` (`nis`,`nama`,`status_id`);
 
 --
--- Indeks untuk tabel `el_soal`
+-- Indexes for table `el_soal`
 --
 ALTER TABLE `el_soal`
   ADD PRIMARY KEY (`id_soal`);
 
 --
--- Indeks untuk tabel `el_tugas`
+-- Indexes for table `el_tugas`
 --
 ALTER TABLE `el_tugas`
   ADD PRIMARY KEY (`id`),
@@ -1093,7 +1209,7 @@ ALTER TABLE `el_tugas`
   ADD KEY `mapel_id_2` (`mapel_id`,`pengajar_id`);
 
 --
--- Indeks untuk tabel `el_tugas_kelas`
+-- Indexes for table `el_tugas_kelas`
 --
 ALTER TABLE `el_tugas_kelas`
   ADD PRIMARY KEY (`id`),
@@ -1101,13 +1217,13 @@ ALTER TABLE `el_tugas_kelas`
   ADD KEY `tugas_id_2` (`tugas_id`,`kelas_id`);
 
 --
--- Indeks untuk tabel `el_tugas_kumpul`
+-- Indexes for table `el_tugas_kumpul`
 --
 ALTER TABLE `el_tugas_kumpul`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `el_tugas_pertanyaan`
+-- Indexes for table `el_tugas_pertanyaan`
 --
 ALTER TABLE `el_tugas_pertanyaan`
   ADD PRIMARY KEY (`id`),
@@ -1115,176 +1231,182 @@ ALTER TABLE `el_tugas_pertanyaan`
   ADD KEY `tugas_id_2` (`tugas_id`);
 
 --
--- Indeks untuk tabel `el_ujian`
+-- Indexes for table `el_ujian`
 --
 ALTER TABLE `el_ujian`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `el_ujian_soal`
+-- Indexes for table `el_ujian_soal`
 --
 ALTER TABLE `el_ujian_soal`
   ADD PRIMARY KEY (`id_ujian_soal`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `el_absen`
+-- AUTO_INCREMENT for table `el_absen`
 --
 ALTER TABLE `el_absen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT untuk tabel `el_absen_siswa`
+-- AUTO_INCREMENT for table `el_absen_siswa`
 --
 ALTER TABLE `el_absen_siswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT untuk tabel `el_jawaban`
+-- AUTO_INCREMENT for table `el_banksoal`
+--
+ALTER TABLE `el_banksoal`
+  MODIFY `id_banksoal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `el_jawaban`
 --
 ALTER TABLE `el_jawaban`
-  MODIFY `id_jawaban` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_jawaban` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT untuk tabel `el_kelas`
+-- AUTO_INCREMENT for table `el_kelas`
 --
 ALTER TABLE `el_kelas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT untuk tabel `el_kelas_siswa`
+-- AUTO_INCREMENT for table `el_kelas_siswa`
 --
 ALTER TABLE `el_kelas_siswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT untuk tabel `el_komentar`
+-- AUTO_INCREMENT for table `el_komentar`
 --
 ALTER TABLE `el_komentar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `el_login`
+-- AUTO_INCREMENT for table `el_login`
 --
 ALTER TABLE `el_login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT untuk tabel `el_login_log`
+-- AUTO_INCREMENT for table `el_login_log`
 --
 ALTER TABLE `el_login_log`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
--- AUTO_INCREMENT untuk tabel `el_mapel`
+-- AUTO_INCREMENT for table `el_mapel`
 --
 ALTER TABLE `el_mapel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `el_mapel_ajar`
+-- AUTO_INCREMENT for table `el_mapel_ajar`
 --
 ALTER TABLE `el_mapel_ajar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT untuk tabel `el_mapel_kelas`
+-- AUTO_INCREMENT for table `el_mapel_kelas`
 --
 ALTER TABLE `el_mapel_kelas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT untuk tabel `el_materi`
+-- AUTO_INCREMENT for table `el_materi`
 --
 ALTER TABLE `el_materi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT untuk tabel `el_materi_kelas`
+-- AUTO_INCREMENT for table `el_materi_kelas`
 --
 ALTER TABLE `el_materi_kelas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `el_messages`
+-- AUTO_INCREMENT for table `el_messages`
 --
 ALTER TABLE `el_messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT untuk tabel `el_nilai_tugas`
+-- AUTO_INCREMENT for table `el_nilai_tugas`
 --
 ALTER TABLE `el_nilai_tugas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `el_pengajar`
+-- AUTO_INCREMENT for table `el_pengajar`
 --
 ALTER TABLE `el_pengajar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `el_pengumuman`
+-- AUTO_INCREMENT for table `el_pengumuman`
 --
 ALTER TABLE `el_pengumuman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `el_pilihan`
+-- AUTO_INCREMENT for table `el_pilihan`
 --
 ALTER TABLE `el_pilihan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `el_siswa`
+-- AUTO_INCREMENT for table `el_siswa`
 --
 ALTER TABLE `el_siswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT untuk tabel `el_soal`
+-- AUTO_INCREMENT for table `el_soal`
 --
 ALTER TABLE `el_soal`
-  MODIFY `id_soal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_soal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `el_tugas`
+-- AUTO_INCREMENT for table `el_tugas`
 --
 ALTER TABLE `el_tugas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT untuk tabel `el_tugas_kelas`
+-- AUTO_INCREMENT for table `el_tugas_kelas`
 --
 ALTER TABLE `el_tugas_kelas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT untuk tabel `el_tugas_kumpul`
+-- AUTO_INCREMENT for table `el_tugas_kumpul`
 --
 ALTER TABLE `el_tugas_kumpul`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT untuk tabel `el_tugas_pertanyaan`
+-- AUTO_INCREMENT for table `el_tugas_pertanyaan`
 --
 ALTER TABLE `el_tugas_pertanyaan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `el_ujian`
+-- AUTO_INCREMENT for table `el_ujian`
 --
 ALTER TABLE `el_ujian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT untuk tabel `el_ujian_soal`
+-- AUTO_INCREMENT for table `el_ujian_soal`
 --
 ALTER TABLE `el_ujian_soal`
-  MODIFY `id_ujian_soal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_ujian_soal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
